@@ -1,5 +1,5 @@
-#include "tmpl-tests.h"
-#include "template.h"
+#include "schat-tests.h"
+#include "schat.h"
 
 TEST(InitTerminate, Basic, 0.0f,
      // initialisation
@@ -8,17 +8,17 @@ TEST(InitTerminate, Basic, 0.0f,
      },
      // cleanup
      {
-	 tmplTerminateContext(&m_data.context);
+	 schatTerminateContext(&m_data.context);
      },
      // test
      {
-	 ASSERT(tmplInitContext(&m_data.context) == TMPL_SUCCESS);
+	 ASSERT(schatInitContext(&m_data.context) == SCHAT_SUCCESS);
       ASSERT(m_data.context != 0);
-	 ASSERT(tmplTerminateContext(&m_data.context) == TMPL_SUCCESS);
+	 ASSERT(schatTerminateContext(&m_data.context) == SCHAT_SUCCESS);
       ASSERT(m_data.context == 0)
      },
      // data
      {
-	 tmplContext* context;
+	 schatContext* context;
      }
     );

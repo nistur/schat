@@ -1,10 +1,12 @@
-solution "template"
+solution "schat"
 language "C++"
 configurations { "Debug", "Release" }
 includedirs { "include", "src/include" }
 files { "include/**.h" }
 
-defines { "TMPL_BUILD" }
+includedirs { "external/restclient/include/" }
+
+defines { "SCHAT_BUILD" }
 
 configuration "Debug"
 defines { "DEBUG" }
@@ -19,20 +21,11 @@ flags { "OptimizeSpeed",
 	"NoFramePointer" }
 targetdir "build/release"
 
-project "template"
+project "restclient"
 kind "StaticLib"
-files { "src/**.c", "src/**.cpp" }
+files { "external/restclient/source/**.cpp", "external/restclient/include/**.h" }
 
-project "template-dynamic"
-kind "SharedLib"
-files { "src/**.c", "src/**.cpp" }
-targetname "template"
-
-project "tests"
+project "schat"
 kind "ConsoleApp"
-files { "tests/**.cpp" }
-links { "template" }
-configuration "Debug"
-postbuildcommands("build/debug/tests")
-configuration "Release"
-postbuildcommands("build/release/tests")
+files { "src/**.cpp" }
+links { "restclient", "curl" }

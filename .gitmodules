@@ -1,3 +1,6 @@
 [submodule "tests/testsuite"]
 	path = tests/testsuite
 	url = https://github.com/nistur/testsuite.git
+[submodule "external/restclient"]
+	path = external/restclient
+	url = https://github.com/mrtazz/restclient-cpp
